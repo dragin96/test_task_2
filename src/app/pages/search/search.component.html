@@ -34,8 +34,8 @@
 </form>
 <ng-container *ngIf="(result | async) as value">
     <mat-list data-testid="result">
-        <mat-list-item *ngFor="let movie of value.Search">
+        <ng-container *ngFor="let movie of value.Search">
             <app-result-item [movie]="movie"></app-result-item>
-        </mat-list-item>
+        </ng-container>
     </mat-list>
 </ng-container>

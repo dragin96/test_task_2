@@ -1,7 +1,7 @@
-<ng-container>
+<mat-list-item >
     <img matListAvatar [src]="movie.Poster" [alt]="movie.Year">
     <h3 matLine><a [routerLink]="'/movie/' + movie.imdbID">{{movie.Title}} </a></h3>
     <div matLine>
         <p>{{movie.Year}}</p>
     </div>
-</ng-container>
+</mat-list-item >

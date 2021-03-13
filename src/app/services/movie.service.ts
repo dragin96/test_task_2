@@ -7,7 +7,7 @@ import {MovieInterface, SearchInterface} from '../movie.interface';
     providedIn: 'root'
 })
 export class MovieService {
-    private apiUrl = 'http://www.omdbapi.com/?apikey=ae3f4670';
+    private apiUrl = 'https://www.omdbapi.com/?apikey=ae3f4670';
 
     constructor(private http: HttpClient) {
     }

@@ -1,0 +1,11 @@
+.search {
+    padding: 2em;
+}
+.search__container {
+    display: flex;
+    justify-content: center;
+}
+.search-form-field {
+    min-width: 300px;
+    width: 450px;
+}

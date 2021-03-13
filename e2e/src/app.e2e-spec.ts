@@ -1,5 +1,5 @@
-import { browser, logging } from 'protractor';
-import { AppPage } from './app.po';
+import {browser, by, element, logging} from 'protractor';
+import {AppPage} from './app.po';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,18 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', async () => {
-    await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('test-movie app is running!');
+  it('should display search', async () => {
+    await page.navigateTo('/');
+    expect(await page.getTitleText()).toEqual('Поиск фильма');
+    const search = element.all(by.css('[data-testid="searchInput"]'));
+    search.sendKeys('two');
+    await page.waitByNumElement('[data-testid="result"] mat-list-item');
+  });
+
+  it('should page mobie', async () => {
+    await page.navigateTo('/movie/tt4986830');
+    expect(await page.getTitleCard()).toEqual('Chun jie xin ling: Zhu meng yan yi quan (2015)');
+    expect((await page.getPoster()).length).toBeGreaterThan(10);
   });
 
   afterEach(async () => {

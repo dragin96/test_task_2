@@ -1,0 +1,25 @@
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+mat-card {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: space-around;
+}
+.poster {
+    margin-right: 25px;
+}
+.content{
+    width: 60%;
+}
+@media screen and (max-width: 620px) {
+    mat-card {
+        flex-direction: column;
+    }
+    .content{
+        width: 100%;
+    }
+}

@@ -1,0 +1,41 @@
+<form class="search">
+    <div class="search__container">
+        <mat-form-field class="search-form-field">
+            <mat-label>Поиск фильма</mat-label>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput type="search"
+                   data-testid="searchInput"
+                   name="search"
+                   [(ngModel)]="searchText"
+                   (input)="onSearchMovie()"
+                   [matAutocomplete]="auto"
+                   placeholder="search here"
+                   class="search-input"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+                <ng-container *ngIf="(result | async) as value">
+                    <ng-container *ngIf="value.Search">
+                        <mat-option *ngFor="let option of value.Search"
+                                    (input)="onSearchMovie()"
+                                    [value]="option.Title"
+                        >
+                            {{option.Title}}
+                        </mat-option>
+                    </ng-container>
+                    <div *ngIf="value.Error" disabled>{{value.Error}}</div>
+                </ng-container>
+
+            </mat-autocomplete>
+        </mat-form-field>
+        <button mat-icon-button color="warn" (click)="onSearchMovie()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</form>
+<ng-container *ngIf="(result | async) as value">
+    <mat-list data-testid="result">
+        <mat-list-item *ngFor="let movie of value.Search">
+            <app-result-item [movie]="movie"></app-result-item>
+        </mat-list-item>
+    </mat-list>
+</ng-container>
